@@ -71,7 +71,7 @@ public class MemoryStateStoreBackend implements CustomStateStoreBackend {
         while (it.hasNext()) {
             Map.Entry<ByteBuffer, byte[]>  next = it.next();
             if (keyByteBuffer.equals(wrap(keySerializer.deserialize(next.getKey()).getData()))) {
-                valueBytes = store.getIfPresent(next.getKey());
+                valueBytes = next.getValue();
                 break;
             }
         }
